@@ -40,7 +40,7 @@ jobs:
         shell: powershell
 
       - name: Deploy to SAP BTP Cloud Foundry
-        run: |
-          cd dist/automation-test-app  
-          cf push
+        run: |  
+          cd dist/automation-test-app
+          cf push -f ../../mainfest.yml
         shell: powershell
