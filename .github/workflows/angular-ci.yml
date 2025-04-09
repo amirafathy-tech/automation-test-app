@@ -34,7 +34,8 @@ jobs:
 
       - name: Login to Cloud Foundry
         run: |
-          cf login -a "${{ secrets.CF_API }}" -u "${{ secrets.CF_USERNAME }}" -p "${{ secrets.CF_PASSWORD }}" -o "${{ secrets.CF_ORG }}" -s "${{ secrets.CF_SPACE }}"
+          $api = "${{ secrets.CF_API }}".Trim()
+          cf login -a $api -u "${{ secrets.CF_USERNAME }}" -p "${{ secrets.CF_PASSWORD }}" -o "${{ secrets.CF_ORG }}" -s "${{ secrets.CF_SPACE }}"
         shell: powershell
 
       - name: Deploy to SAP BTP Cloud Foundry
