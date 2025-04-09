@@ -25,3 +25,20 @@ jobs:
 
       - name: Build Angular app
         run: npx ng build --configuration production
+
+      - name: Install Cloud Foundry CLI
+        run: |
+          choco install cloudfoundry-cli -y
+          cf --version
+        shell: powershell
+
+      - name: Login to Cloud Foundry
+        run: |
+          cf login -a ${{ secrets.CF_API }} -u ${{ secrets.CF_USERNAME }} -p ${{ secrets.CF_PASSWORD }} -o ${{ secrets.CF_ORG }} -s ${{ secrets.CF_SPACE }}
+        shell: powershell
+
+      - name: Deploy to SAP BTP Cloud Foundry
+        run: |
+          cd dist/automation-test-app  
+          cf push
+        shell: powershell

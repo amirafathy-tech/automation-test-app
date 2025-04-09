@@ -1,0 +1,11 @@
+---
+applications:
+  - name: automated-test-app
+    path: dist/automation-test-app
+    buildpack: staticfile_buildpack
+    instances: 1
+    memory: 512MB
+
+    env:
+      TENANT_HOST_PATTERN: '^(.*)\\.cf.us10-001.hana.ondemand.com\.com$'
+
