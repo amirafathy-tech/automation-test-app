@@ -35,6 +35,7 @@ jobs:
       - name: Login to Cloud Foundry
         run: |
           $api = "${{ secrets.CF_API }}".Trim()
+          echo "Logging in with API: $api, Org: ${{ secrets.CF_ORG }}, Space: ${{ secrets.CF_SPACE }}"
           cf login -a $api -u "${{ secrets.CF_USERNAME }}" -p "${{ secrets.CF_PASSWORD }}" -o "${{ secrets.CF_ORG }}" -s "${{ secrets.CF_SPACE }}"
         shell: powershell
 
